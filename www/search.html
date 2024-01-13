@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+
+    const backend = "https://cinic-web-cloud-application.nw.r.appspot.com" // URL Link
+
+    function searchBooking(){
+
+        var booking = {
+            'firstname': document.getElementById('firstname').value, // Takes user input from webpage field
+            'lastname': document.getElementById('lastname').value, // Takes user input from webpage field
+            'bookingDate': document.getElementById('bookingdate').value // Takes user input from webpage field
+        }
+        
+        // Submits request to backend
+
+        $.ajax({
+            type: 'POST',
+            url: backend + '/search-appointment', // Backend end point we point to
+            data: JSON.stringify(booking), // Sends data to backend and converts string to json
+            contentType: "application/json",
+            cache: false,
+            success: function(data) { // If request is successful
+                var message = JSON.parse(data); // Converts text response to JSON
+                
+                if(message['ResponseCode'] == 'Failed'){ // If no records are found, creates an alert
+                    alert(message['ResponseMessage']);
+                } else {
+                    // Creates table header and appends to HTML string
+                    html =  "<div class='appointment-table'> <table>" +
+                                    "<tr>" +
+                                        "<th>First Name </th>" +
+                                        "<th>Last Name </th>" +
+                                        "<th>Date of Birth </th>" +
+                                        "<th>Address</th>" +
+                                        "<th>Phone Number</th>" +
+                                        "<th> Email</th>" +
+                                        "<th>Appointment Date </th>" +
+                                        "<th>Appointment Time </th>" +
+                                    "</tr>" 
+                    // Iterates over the list of data and creates table records
+                    for(var i=0; i<message.length; i++){
+                        html += "<tr>"
+                        html += "<td>" + message[i]['First_Name'] + "</td>"
+                        html += "<td>" + message[i]['Last_Name'] + "</td>"
+                        html += "<td>" + message[i]['Date_Of_Birth'] + "</td>"
+                        html += "<td>" + message[i]['Address'] + "</td>"
+                        html += "<td>" + message[i]['Phone_Number'] + "</td>"
+                        html += "<td>" + message[i]['Email'] + "</td>"
+                        html += "<td>" + message[i]['Date'] + "</td>"
+                        html += "<td>" + message[i]['Time'] + "</td>"
+                        html += "</tr>"
+                    }
+                    html += "</table>" + "</div>"
+                    // If a table exists already, rebuild the table, or create a new table
+                    if($(".appointment-table").length > 0){
+                        $(".appointment-table").html(html)
+                    } else{
+                        $( "body").append(html);  
+                    }       
+                }
+            }, // If fails, alert
+            error: function(xhr, textStatus, errorThrown) {
+                alert('Error submitting form');
+            }
+        });
+        return false;
+    }
+
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>    
+    <title>Search Patient</title>
+</head>
+
+<body>
+    <div class="backbutton">
+        <a id="back" href="/">
+            <i class="fa-solid fa-circle-left"></i>
+        </a>
+    </div>
+
+    <div class="form-container">
+        <h2>Search for a booking</h2>
+        <form>
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname">
+
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname">
+
+            <label for="date">Date of Appointments:</label>
+            <input type="date" id="bookingdate" name="bookingdate">
+
+            <input type="button" value="Search Booking" onClick="searchBooking()"> <!--Creates an onClick function for user when interacting with 'Search Button'-->
+        </form>
+    </div>
+
+</body>
+
+</html>

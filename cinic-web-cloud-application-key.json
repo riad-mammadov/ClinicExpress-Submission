@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cinic-web-cloud-application",
+  "private_key_id": "9bbc0b021b2584c5e9ee635ed07bb51566622ce6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDG6WLSP5jmaJBc\n9jQRlpjsGTWK6IHaS0NenWGujJzwN9BqoVzqBowwZcshIXcWxLSPRTAwEoHgxHVJ\nv8ECjyxgU9318F366WB1Htm6468mOwnQeX+RDkVEY/6egK40kv9nqRadoLXOxqnK\nAZ9hgzvCLPuVZXA0iM9L/ngtQ1FaKuHoyE+ZS4M65cAvevuYVnrf9M5tr11+NaYH\nTF9fzDoN+u2j9ZUpOYF1e+64hkK9abuF/sYQeXfm2rD0yupfS+dOQlzM9lMIczqG\nSReRrTS5wA4vvTuF44gJbV5PQrdSTvR3RvANV2vvJRi8gyMK3Hj33a5DUBIZ9qvo\nJfBNEPFXAgMBAAECggEAAKScNr4RCAo37Bvd7TkzQ1po8AsEqHGQ/AssMzyt/KA8\n/hj3J8jNWTa0K4rRuU5newVe84H5hcszpUpi+FeTkm8Ar69F8xKyWPxKsC4ePmau\nK97IrYAUc9CS7/9gfoEDt8dalO8CNSnp0Jk3UNM9WckzJ5LozTvRIODC/4y+391P\nl4Mi474ol7UAzqcgOKqSJjok5QhZM8MaVMXYn8MNg7kSoiE1EQKCxjVlxMIl/tLH\njKq5ws5zhSFdannuXBbr29zb0ZKrzZfXO7hT68urhYGMT8kI0QJmpKZ1xAGBUKBo\nnj5qe6U68WgCplqMR4zAUDAsrgrfQq8mG5OvTresYQKBgQDrrW4GSO/6TvXEZGdq\n8pmlaje5SgOwilPU1u9hI/GsgK5H7dMXmKRdAEj2Se2+nR00gX4p9fJdp6BzJUU0\n74dQJm5EqmbYlkLUNmXq5wNOIQdUU/J5JLg3OzsphAb1MevMg/ekZECmxPBG+fkG\nE2HOZFR0f814gmmAdKXyqWhuUQKBgQDYEFpRksJbryUMQ02LuElmMIHl+OldETRk\nEZg9tvqsCDAUSnAbQKaqaDeoqhQRBUvnfgq1htnpjhUobLU0ooZV/gzBIRsFbv6M\neYCFw39lx5dI5818EawqxDte3mmiNGZ8Q+Iuwh7c6H5J+8izYDloXL41L5iAlHer\nsj1/e84zJwKBgQDGpCjmNze9nCvd2lqoc8448+v/yniNpim+bWLaV3dtVBCRI80W\nSFvQ31qf6/PtA3QIO1ThfSFI+u5r3vAUDAfa8GlkitOgnhW51BfXA9tvULtiwlbO\n8LosI0pcVaGfrPH4MQrbjnxHlBqJWEwiaNe5JCti/g1rE1BlKuxsOYmB4QKBgHLa\nzohKcZL3WcRZCqHZRvtRkdvEI5lbifQf/kPgPwSwHY7Luyhhh7dSSzQXpS8fF6hp\nMhwpITGsW8bvcqwWMT8JG5KWnJyY0iuucwmoUNKz9NHGl076vgDF66GUraaSIGCy\nXUvp2SopVOjTNW9VGW9Gzb3MHU9MnQjiaRqZn5VFAoGALK5EgrAahvhayDmsFdNu\n8jo9GY2itGpJ64MGjoGu8HE5eg2y5vPT+YPxU24RCXNKCuRD9+FLFAvqLIilGdni\nAaveKK1I0SjNGE9OGFGT4B3wBdHMVuSuRiQ7yoHPT+yXnkquH82cZ8CwsfWCmsll\n/utQqE3fHOuOykGog2LyE7s=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cinic-web-cloud-application@appspot.gserviceaccount.com",
+  "client_id": "110393223037962165075",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cinic-web-cloud-application%40appspot.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

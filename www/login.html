@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+
+    const backend = "https://cinic-web-cloud-application.nw.r.appspot.com" // URL 
+
+    function SubmitLogin(){
+
+        var credentials = {
+            'username': document.getElementById('username').value, // Takes user input from webpage field
+            'password': document.getElementById('password').value // Takes user input from webpage field
+        }
+        
+        // Submits request to backend
+
+        $.ajax({
+            type: 'POST',
+            url: backend + '/authenticate', // Backend end point we point to
+            data: JSON.stringify(credentials), // Sends data to backend and converts string to json
+            contentType: "application/json",
+            cache: false,
+            success: function(data) { // If login is successful
+                console.log(data)
+                var message = JSON.parse(data);
+                if(message['ResponseCode'] == 200){
+                    window.location.href = "/index";
+                } else {
+                    alert("Invalid credentials, please try again.")
+                }
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                alert('Error submitting form');
+            }
+        });
+        return false;
+    }
+
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>    
+    <title>Login</title>
+</head>
+<body>
+    <div style="padding-bottom:100px;">
+        <p style="display:none;">hide this</p>
+    </div>
+    <div class="login-container">
+        <form>
+            <h2>Login</h2>
+            <div class="username-section">
+                <label for="username">Username:</label>
+                <input type="text" id="username" style="width:75%" required>
+            </div>
+            <div class="password-section">
+                <label for="password">Password:</label>
+                <input type="password" id="password" style="width:75%" required>
+            </div>
+            <div class="button-section">
+                <button type="button" id="loginbutton" onClick="SubmitLogin()">Login</button> <!--Creates an onClick function for user when interacting with 'Login Button'-->
+            </div>
+        </form>
+    </div>
+</body>
+</html>

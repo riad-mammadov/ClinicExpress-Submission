@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+
+    const backend = "https://cinic-web-cloud-application.nw.r.appspot.com" // URL
+
+    function createBooking(){
+
+        var booking = {
+            'name': document.getElementById('name').value, // Takes user input from webpage field
+            'email': document.getElementById('email').value, // Takes user input from webpage field
+            'date': document.getElementById('date').value, // Takes user input from webpage field
+            'time': document.getElementById('time').value, // Takes user input from webpage field
+            'service': document.getElementById('service').value, // Takes user input from webpage field
+            'message': document.getElementById('message').value // Takes user input from webpage field
+        }
+
+        // Data validation (if fields are empty)
+
+        if(booking.name == ''){ alert("Please enter the patients name"); }
+        if(booking.email == ''){ alert("Please enter the patients email address"); }
+        if(booking.date == ''){ alert("Please enter a date for an appointment"); }
+        if(booking.time == ''){ alert("Please enter the time required for an appointment"); }
+        if(booking.service == 'Select a service'){ alert("Confirm service required."); }
+        
+        // Submits request to backend
+
+        $.ajax({
+            type: 'POST',
+            url: backend + '/book-appointment', // Backend end point we point to
+            data: JSON.stringify(booking), // Sends data to backend and converts string to json
+            contentType: "application/json",
+            cache: false,
+            success: function(data) { // If request is successful
+                var message = JSON.parse(data);
+                alert(message['ResponseMessage']);
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                alert('Error submitting form');
+            }
+        });
+        return false;
+    }
+
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>    
+    <title>Booking Page</title>
+</head>
+
+<body>
+    <div class="backbutton">
+        <a id="back" href="/">
+            <i class="fa-solid fa-circle-left"></i>
+        </a>
+    </div>
+
+
+    <div class="form-container">
+        <h2>Book Your Appointment</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date">
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time">
+
+            <label for="service">Service Type:</label>
+            <select id="service" name="service">
+                <option >Select a service</option>
+                <option>Consultation</option>
+                <option>Follow-Up</option>
+                <option>Prescription</option>
+            </select>
+
+            <label for="message">Additional Message:</label>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea>
+
+            <input type="button" value="Book Appointment" onclick="createBooking();"> <!--Creates an onClick function for user when interacting with 'Book appointment button'-->
+        </form>
+        </form>
+    </div>
+</body>
+
+</html>

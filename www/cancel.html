@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+
+    const backend = "https://cinic-web-cloud-application.nw.r.appspot.com" // URL
+
+    function cancelBooking(){
+
+        var booking = {
+            'name': document.getElementById('name').value, // Takes user input from webpage field
+            'date': document.getElementById('date').value, // Takes user input from webpage field
+            'time': document.getElementById('time').value // Takes user input from webpage field
+        }
+
+        // Data validation (if fields are empty)
+
+        if(booking.name == ''){ alert("Please enter the patients name"); }
+        if(booking.date == ''){ alert("Please enter a date for an appointment"); }
+        if(booking.time == ''){ alert("Please enter the time required for an appointment"); }
+        
+        // Submits request to backend
+
+        $.ajax({
+            type: 'POST',
+            url: backend + '/cancel-appointment', // Backend end point we point to
+            data: JSON.stringify(booking), // Sends data to backend and converts string to json
+            contentType: "application/json",
+            cache: false,
+            success: function(data) {
+                var message = JSON.parse(data);
+                alert(message['ResponseMessage']);
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                alert('Error submitting form');
+            }
+        });
+        return false;
+    }
+
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>     
+    <title>Cancellation Page</title>
+</head>
+
+<body>
+    <div class="backbutton">
+        <a id="back" href="/">
+            <i class="fa-solid fa-circle-left"></i>
+        </a>
+    </div>
+
+
+    <div class="form-container">
+        <h2>Cancel an Appointment</h2>
+        <form action="/submit-appointment-url" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date">
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time">
+
+            <label for="service">Service Type:</label>
+            <select id="service" name="service">\
+                <option value="service1">Consultation</option>
+                <option value="service2">Follow-Up</option>
+                <option value="service2">Prescription</option>
+            </select>
+
+            <input type="button" value="Cancel Appointment" onClick="cancelBooking()">
+        </form>
+    </div>
+</body>
+
+</html>
